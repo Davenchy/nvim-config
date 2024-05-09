@@ -16,6 +16,7 @@ return {
         null_ls.builtins.diagnostics.pylint,
         null_ls.builtins.diagnostics.trivy,
         null_ls.builtins.diagnostics.eslint_d,
+        null_ls.builtins.diagnostics.codespell,
 
         null_ls.builtins.formatting.stylua,
         null_ls.builtins.formatting.isortd,
@@ -23,6 +24,7 @@ return {
         null_ls.builtins.formatting.clang_format,
         null_ls.builtins.formatting.markdownlint,
         null_ls.builtins.formatting.prettierd,
+        null_ls.builtins.formatting.codespell,
 
         null_ls.builtins.hover.printenv,
       },
