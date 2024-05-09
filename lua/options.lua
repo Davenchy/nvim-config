@@ -1,3 +1,5 @@
+vim.g.mapleader = " "
+
 vim.opt.background = 'dark'
 vim.opt.number = true
 vim.opt.expandtab = true -- use spaces
@@ -8,5 +10,3 @@ vim.opt.colorcolumn = '+1'
 vim.opt.hidden = true
 vim.opt.wildmode = { 'longest', 'full' }
 vim.opt.wildoptions = 'fuzzy'
-
-vim.g.leader = "space"
