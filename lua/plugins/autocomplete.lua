@@ -7,6 +7,7 @@ return {
     "https://codeberg.org/FelipeLema/cmp-async-path",
     "hrsh7th/cmp-emoji",
     "ray-x/cmp-treesitter",
+    "hrsh7th/cmp-nvim-lsp-signature-help",
 
     "L3MON4D3/LuaSnip",
     "saadparwaiz1/cmp_luasnip",
@@ -15,8 +16,6 @@ return {
   },
   config = function()
     local cmp = require "cmp"
-
-
 
     cmp.setup {
       snippet = {
@@ -36,6 +35,7 @@ return {
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
       }),
       sources = cmp.config.sources({
+        { name = 'nvim_lsp_signature_help' },
         { name = 'codeium' },
         { name = 'nvim_lsp' },
         { name = 'treesitter' },
@@ -59,7 +59,7 @@ return {
     cmp.setup.cmdline({ '/', '?' }, {
       mapping = cmp.mapping.preset.cmdline(),
       sources = {
-        { name = 'buffer' }
+        { name = 'buffer' },
       }
     })
 
@@ -67,9 +67,9 @@ return {
     cmp.setup.cmdline(':', {
       mapping = cmp.mapping.preset.cmdline(),
       sources = cmp.config.sources({
-        { name = 'async_path' }
-      }, {
-        { name = 'cmdline' }
+        { name = 'cmdline' },
+        { name = 'async_path' },
+        { name = 'buffer' },
       }),
       matching = { disallow_symbol_nonprefix_matching = false }
     })
