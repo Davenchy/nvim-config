@@ -5,7 +5,10 @@ return {
   },
   {
     "williamboman/mason-lspconfig.nvim",
-    dependencies = { "hrsh7th/cmp-nvim-lsp" },
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "ray-x/lsp_signature.nvim",
+    },
     config = function()
       local config = require 'mason-lspconfig'
       config.setup {
@@ -32,7 +35,6 @@ return {
 
       -- add some keymaps
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = "LSP Hover" })
-      vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = "LSP Code Actions" })
       vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = "LSP Go To Definition" })
     end,
   },
