@@ -6,4 +6,7 @@ vim.opt.tabstop = 2
 vim.opt.wrap = false
 vim.opt.colorcolumn = '+1'
 vim.opt.hidden = true
+vim.opt.wildmode = { 'longest', 'full' }
+vim.opt.wildoptions = 'fuzzy'
+
 vim.g.leader = "space"
