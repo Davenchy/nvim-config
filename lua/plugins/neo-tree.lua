@@ -15,8 +15,13 @@ return {
     source_selector = {
       winbar = true,
     },
+    window = {
+      mappings = {
+        ['<C-b>'] = 'close_window',
+      },
+    },
   },
   keys = {
-    { "<C-b>", ":Neotree filesystem toggle reveal left<CR>", desc = "NeoTree" }
+    { "<C-b>", ":Neotree filesystem reveal left<CR>", desc = "NeoTree" }
   },
 }
