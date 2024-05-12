@@ -191,6 +191,9 @@ return {
         group = lint_augroup,
         callback = function()
           require('lint').try_lint()
+          if vim.g.enable_cspell then
+            require('lint').try_lint('cspell')
+          end
         end,
       })
     end,

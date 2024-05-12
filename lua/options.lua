@@ -2,6 +2,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 vim.g.have_nerd_font = true
+vim.g.enable_cspell = true
 
 vim.opt.background = 'dark'
 vim.opt.number = true

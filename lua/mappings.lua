@@ -34,3 +34,15 @@ map('<C-tab>', 'gt', 'Goto next tab')
 map('<C-S-tab>', 'gT', 'Goto previous tab')
 map('<C-t>', ':tabnew<CR>', 'Create a new tab')
 map('<C-c>', ':tabclose<CR>', 'Close tab')
+
+-- Toggle CSpell
+map('<leader>tc', function()
+  if vim.g.enable_cspell then
+    vim.g.enable_cspell = false
+    vim.notify('CSpell Disabled')
+  else
+    vim.g.enable_cspell = true
+    require 'lint'.try_lint('cspell')
+    vim.notify('CSpell Enabled')
+  end
+end, 'Toggle CSpell')
