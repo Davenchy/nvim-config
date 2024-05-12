@@ -11,9 +11,11 @@ return {
 
     wk.register({
       ['<leader>'] = {
-        f = { name = "File" },
+        s = { name = "[S]earch" },
+        t = { name = '[T]oggle' },
+        h = { name = '[H]unks' },
         c = {
-          name = "Code",
+          name = "[C]ode",
           i = { vim.lsp.buf.implementation, "Implementation" },
           r = { vim.lsp.buf.refrences, "Refrences" },
           n = { vim.lsp.buf.rename, "Rename" },
@@ -27,19 +29,17 @@ return {
           a = { vim.lsp.buf.code_action, "Code Actions" },
         },
         b = {
-          name = "Buffer",
-          s = { ':b#<CR>', "Switch" },
-          n = { ':new<CR>', "New" },
-          b = { ':Telescope buffers<CR>', "Buffers" },
-          c = { ':bdelete<CR>', "Close" },
+          name = "[B]uffer",
+          b = { ':b#<CR>', "Buffer: Switch With Last previous" },
+          n = { ':new<CR>', "Buffer: Create [N]ew" },
+          v = { ':vsplit new<CR>', "Buffer: Create New [V]ertical" },
+          h = { ':split new<CR>', "Buffer: Create New [H]orizontal" },
+          c = { ':bdelete<CR>', "Buffer: [C]lose" },
         },
-        x = {
-          name = "Diagnostics",
-          x = { ':TroubleToggle<CR>', "Toggle Trouble" },
-          w = { ':TroubleToggle workspace_diagnostics<CR>', "Workspace Diagnostics" },
+        d = {
+          name = "[D]ocument",
           d = { ':TroubleToggle document_diagnostics<CR>', "Document Diagnostics" },
           q = { ':TroubleToggle quickfix<CR>', "Trouble QuickFix" },
-          l = { ':TroubleToggle loclist<CR>', "Trouble LocList" },
           t = { ':TodoTrouble<CR>', "Trouble Todo Comments" },
         },
       },
