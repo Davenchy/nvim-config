@@ -24,10 +24,12 @@ local ts_modules = {
 return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
-  config = function()
-    require "nvim-treesitter.configs".setup {
-      ensure_installed = ts_modules,
-      auto_install = true,
-    }
+  opts = {
+    ensure_installed = ts_modules,
+    auto_install = true,
+  },
+  config = function(_, opts)
+    require "nvim-treesitter.configs".setup(opts)
+    require "nvim-treesitter.install".prefer_git = true
   end,
 }
