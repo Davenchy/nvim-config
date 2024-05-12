@@ -17,6 +17,7 @@ return {
         null_ls.builtins.diagnostics.trivy,
         null_ls.builtins.diagnostics.eslint_d,
         null_ls.builtins.diagnostics.codespell,
+        null_ls.builtins.diagnostics.markdownlint,
 
         null_ls.builtins.formatting.stylua,
         null_ls.builtins.formatting.isortd,
