@@ -2,10 +2,11 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 vim.g.have_nerd_font = true
-vim.g.enable_cspell = false
 
 vim.opt.background = 'dark'
 vim.opt.number = true
+vim.opt.cursorline = true
+vim.opt.confirm = true
 vim.opt.mouse = 'a'
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.breakindent = true
@@ -13,6 +14,10 @@ vim.opt.undofile = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.signcolumn = 'yes'
+vim.opt.showmode = true
+vim.opt.showcmd = true
+vim.opt.ruler = true
+vim.opt.textwidth = 80
 vim.opt.updatetime = 250
 vim.opt.timeoutlen = 300
 vim.opt.splitright = true
