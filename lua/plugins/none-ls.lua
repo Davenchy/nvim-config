@@ -1,9 +1,13 @@
 -- replacment for null-ls
 return {
   "nvimtools/none-ls.nvim",
-  dependencies = { "nvim-lua/plenary.nvim" },
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "davidmh/cspell.nvim",
+  },
   config = function()
     local null_ls = require("null-ls")
+    local cspell = require("cspell")
 
     null_ls.setup({
       sources = {
@@ -16,8 +20,8 @@ return {
         null_ls.builtins.diagnostics.pylint,
         null_ls.builtins.diagnostics.trivy,
         null_ls.builtins.diagnostics.eslint_d,
-        null_ls.builtins.diagnostics.codespell,
         null_ls.builtins.diagnostics.markdownlint,
+        cspell.diagnostics,
 
         null_ls.builtins.formatting.stylua,
         null_ls.builtins.formatting.isortd,
@@ -25,9 +29,10 @@ return {
         null_ls.builtins.formatting.clang_format,
         null_ls.builtins.formatting.markdownlint,
         null_ls.builtins.formatting.prettierd,
-        null_ls.builtins.formatting.codespell,
 
         null_ls.builtins.hover.printenv,
+
+        cspell.code_actions,
       },
     })
 
