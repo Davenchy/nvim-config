@@ -16,6 +16,26 @@ return {
           "rafamadriz/friendly-snippets",
           config = function()
             require("luasnip.loaders.from_vscode").lazy_load()
+
+            local extends = {
+              ["typescript"] = { "tsdoc" },
+              ["javascript"] = { "jsdoc" },
+              ["lua"] = { "luadoc" },
+              ["python"] = { "pydoc" },
+              ["rust"] = { "rustdoc" },
+              ["cs"] = { "csharpdoc" },
+              ["java"] = { "javadoc" },
+              ["c"] = { "cdoc" },
+              ["cpp"] = { "cppdoc" },
+              ["php"] = { "phpdoc" },
+              ["kotlin"] = { "kdoc" },
+              ["ruby"] = { "rdoc" },
+              ["sh"] = { "shelldoc" },
+            };
+
+            for k, v in ipairs(extends) do
+              require 'luasnip'.filetype_extend(k, v)
+            end
           end,
         },
       },
