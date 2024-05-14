@@ -16,3 +16,11 @@ vim.api.nvim_create_autocmd('TermOpen', {
     vim.opt_local.relativenumber = false
   end,
 })
+
+-- Define user command to copy the code aas a screenshot using silicon cli tool
+vim.api.nvim_create_user_command('CopyScreen', function()
+  local filepath = vim.fn.expand('%')
+  os.execute('silicon -c ' .. filepath)
+end, {
+  desc = "Copy the code as a screenshot using silicon cli tool",
+})
