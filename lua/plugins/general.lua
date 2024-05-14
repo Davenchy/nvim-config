@@ -62,4 +62,13 @@ return {
     opts = {},
   },
   { "wakatime/vim-wakatime", lazy = false },
+  {
+    "danymat/neogen",
+    keys = {
+      { '<leader>cg', ':Neogen<CR>', desc = "[G]enerate Docs" },
+    },
+    opts = {
+      snippet_engine = "luasnip",
+    },
+  },
 }
