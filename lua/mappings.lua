@@ -46,3 +46,7 @@ map('<C-tab>', 'gt', 'Goto next tab')
 map('<C-S-tab>', 'gT', 'Goto previous tab')
 map('<C-n>', ':tabnew<CR>', 'Create a new tab')
 map('<C-c>', ':tabclose<CR>', 'Close tab')
+
+-- Open Terminals
+map('<leader>|', ':vsplit +term<CR>', "Open Vertical Terminal")
+map('<leader>_', ':split +term<CR>', "Open Horizontal Terminal")
