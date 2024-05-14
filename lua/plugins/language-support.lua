@@ -31,7 +31,11 @@ return {
         lua_ls = {},
         tsserver = {},
         bashls = {},
-        clangd = {},
+        clangd = {
+          capabilities = {
+            offsetEncoding = 'utf-8',
+          },
+        },
         pyright = {},
         rust_analyzer = {},
       }
@@ -191,9 +195,6 @@ return {
         group = lint_augroup,
         callback = function()
           require('lint').try_lint()
-          if vim.g.enable_cspell then
-            require('lint').try_lint('cspell')
-          end
         end,
       })
     end,
