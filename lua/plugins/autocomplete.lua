@@ -7,8 +7,12 @@ return {
     "hrsh7th/cmp-calc",
     "hrsh7th/cmp-emoji",
     "saadparwaiz1/cmp_luasnip",
-    "L3MON4D3/LuaSnip",
-    "rafamadriz/friendly-snippets",
+    {
+      "L3MON4D3/LuaSnip",
+      dependencies = {
+        "rafamadriz/friendly-snippets",
+      },
+    },
     "ray-x/cmp-treesitter",
     "https://codeberg.org/FelipeLema/cmp-async-path",
   },
@@ -17,6 +21,7 @@ return {
     local luasnip = require "luasnip"
 
     luasnip.setup {}
+    luasnip.config.setup({ enable_autosnippets = true })
 
     -- Setup friendly snippets
     require("luasnip.loaders.from_vscode").lazy_load()
@@ -107,8 +112,5 @@ return {
       }),
       matching = { disallow_symbol_nonprefix_matching = false }
     })
-
-    -- load vscode snippets using luasnip
-    require("luasnip.loaders.from_vscode").lazy_load()
   end,
 }
