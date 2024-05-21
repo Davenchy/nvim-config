@@ -6,40 +6,11 @@ return {
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-calc",
     "hrsh7th/cmp-emoji",
+    "saadparwaiz1/cmp_luasnip",
+    "L3MON4D3/LuaSnip",
+    "rafamadriz/friendly-snippets",
     "ray-x/cmp-treesitter",
     "https://codeberg.org/FelipeLema/cmp-async-path",
-    {
-      "L3MON4D3/LuaSnip",
-      dependencies = {
-        "saadparwaiz1/cmp_luasnip",
-        {
-          "rafamadriz/friendly-snippets",
-          config = function()
-            require("luasnip.loaders.from_vscode").lazy_load()
-
-            local extends = {
-              ["typescript"] = { "tsdoc" },
-              ["javascript"] = { "jsdoc" },
-              ["lua"] = { "luadoc" },
-              ["python"] = { "pydoc" },
-              ["rust"] = { "rustdoc" },
-              ["cs"] = { "csharpdoc" },
-              ["java"] = { "javadoc" },
-              ["c"] = { "cdoc" },
-              ["cpp"] = { "cppdoc" },
-              ["php"] = { "phpdoc" },
-              ["kotlin"] = { "kdoc" },
-              ["ruby"] = { "rdoc" },
-              ["sh"] = { "shelldoc" },
-            };
-
-            for k, v in ipairs(extends) do
-              require 'luasnip'.filetype_extend(k, v)
-            end
-          end,
-        },
-      },
-    },
   },
   config = function()
     local cmp = require "cmp"
@@ -47,6 +18,30 @@ return {
 
     luasnip.setup {}
 
+    -- Setup friendly snippets
+    require("luasnip.loaders.from_vscode").lazy_load()
+
+    local extends = {
+      ["typescript"] = { "tsdoc" },
+      ["javascript"] = { "jsdoc" },
+      ["lua"] = { "luadoc" },
+      ["python"] = { "pydoc" },
+      ["rust"] = { "rustdoc" },
+      ["cs"] = { "csharpdoc" },
+      ["java"] = { "javadoc" },
+      ["c"] = { "cdoc" },
+      ["cpp"] = { "cppdoc" },
+      ["php"] = { "phpdoc" },
+      ["kotlin"] = { "kdoc" },
+      ["ruby"] = { "rdoc" },
+      ["sh"] = { "shelldoc" },
+    };
+
+    for k, v in ipairs(extends) do
+      luasnip.filetype_extend(k, v)
+    end
+
+    -- Setup autocompletetion
     cmp.setup {
       snippet = {
         expand = function(args)
