@@ -71,4 +71,15 @@ return {
       snippet_engine = "luasnip",
     },
   },
+  {
+    "folke/zen-mode.nvim",
+    opts = {
+      plugins = {
+        options  = {
+          ruler = true,
+          showcmd = true,
+        },
+      },
+    },
+  },
 }
