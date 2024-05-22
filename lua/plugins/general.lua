@@ -106,4 +106,13 @@ return {
 
     end
   },
+  {
+  'phaazon/hop.nvim',
+  branch = 'v2', -- optional but strongly recommended
+  cmd = 'HopWordMW',
+  keys = {
+    {'gw', ':HopWordMW<CR>', desc = "Hop [g]o to [w]ord"}
+  },
+  opts = {},
+  },
 }
