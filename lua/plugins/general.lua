@@ -88,4 +88,22 @@ return {
       alpha = 0.50,
     },
   },
+  {
+    "numToStr/FTerm.nvim",
+    config = function()
+      local ft = require 'FTerm'
+
+      ft.setup{}
+      
+      local function def(name, command)
+        vim.api.nvim_create_user_command(name, command, { bang = true })
+      end
+
+      def('FTermOpen', ft.open)
+      def('FTermClose', ft.close)
+      def('FTermToggle', ft.toggle)
+      def('FTermExit', ft.exit)
+
+    end
+  },
 }

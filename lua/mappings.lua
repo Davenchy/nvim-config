@@ -50,6 +50,7 @@ map('<C-c>', ':tabclose<CR>', 'Close tab')
 -- Open Terminals
 map('<leader>|', ':vsplit +term<CR>:start<CR>', "Open Vertical Terminal")
 map('<leader>_', ':split +term<CR>:start<CR>', "Open Horizontal Terminal")
+map('<leader>.', ':FTermToggle<CR>', "Toggle Floating Terminal")
 
 -- Toggle ZenMode
 map('<leader>z', ':ZenMode<CR>', "Toggle ZenMode")
