@@ -12,7 +12,7 @@ return {
     wk.register({
       ['<leader>'] = {
         s = { name = "[S]earch" },
-        t = { name = '[T]oggle' },
+        u = { name = "[U]I" },
         h = { name = '[H]unks' },
         c = {
           name = "[C]ode",
