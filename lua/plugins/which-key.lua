@@ -42,6 +42,11 @@ return {
           q = { ':TroubleToggle quickfix<CR>', "Trouble QuickFix" },
           t = { ':TodoTrouble<CR>', "Trouble Todo Comments" },
         },
+        t = {
+          name = "[T]erminal",
+          t = { ':FTermToggle<CR>', "Toggle floating terminal" },
+          l = { function() require 'FTerm'.run{'lazygit'} end, "LazyGit" },
+        }
       },
     })
   end,
