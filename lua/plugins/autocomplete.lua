@@ -6,51 +6,17 @@ return {
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-calc",
     "hrsh7th/cmp-emoji",
-    "saadparwaiz1/cmp_luasnip",
-    {
-      "L3MON4D3/LuaSnip",
-      dependencies = {
-        "rafamadriz/friendly-snippets",
-      },
-    },
     "ray-x/cmp-treesitter",
+    "saadparwaiz1/cmp_luasnip",
     "https://codeberg.org/FelipeLema/cmp-async-path",
   },
   config = function()
     local cmp = require "cmp"
-    local luasnip = require "luasnip"
 
-    luasnip.setup {}
-    luasnip.config.setup({ enable_autosnippets = true })
-
-    -- Setup friendly snippets
-    require("luasnip.loaders.from_vscode").lazy_load()
-
-    local extends = {
-      ["typescript"] = { "tsdoc" },
-      ["javascript"] = { "jsdoc" },
-      ["lua"] = { "luadoc" },
-      ["python"] = { "pydoc" },
-      ["rust"] = { "rustdoc" },
-      ["cs"] = { "csharpdoc" },
-      ["java"] = { "javadoc" },
-      ["c"] = { "cdoc" },
-      ["cpp"] = { "cppdoc" },
-      ["php"] = { "phpdoc" },
-      ["kotlin"] = { "kdoc" },
-      ["ruby"] = { "rdoc" },
-      ["sh"] = { "shelldoc" },
-    };
-
-    for k, v in ipairs(extends) do
-      luasnip.filetype_extend(k, v)
-    end
-
-    -- Setup autocompletetion
     cmp.setup {
       snippet = {
         expand = function(args)
-          luasnip.lsp_expand(args.body)
+          require 'luasnip'.lsp_expand(args.body)
         end,
       },
       window = {
@@ -64,13 +30,15 @@ return {
         ['<C-e>'] = cmp.mapping.abort(),
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
         ['<C-l>'] = cmp.mapping(function()
-          if luasnip.expand_or_locally_jumpable() then
-            luasnip.expand_or_jump()
+          local ls = require 'luasnip'
+          if ls.expand_or_locally_jumpable() then
+            ls.expand_or_jump()
           end
         end, { 'i', 's' }),
         ['<C-h>'] = cmp.mapping(function()
-          if luasnip.locally_jumpable(-1) then
-            luasnip.jump(-1)
+          local ls = require 'luasnip'
+          if ls.locally_jumpable(-1) then
+            ls.jump(-1)
           end
         end, { 'i', 's' }),
       }),
@@ -79,10 +47,17 @@ return {
         { name = 'codeium' },
         { name = 'nvim_lsp' },
         { name = 'treesitter' },
-        { name = 'luasnip' },
+        {
+          name = 'luasnip',
+          option = {
+            show_autosnippets = true,
+            use_show_condition = false,
+          },
+        },
+        { name = 'emoji' },
+      }, {
         { name = 'async_path' },
         { name = 'buffer' },
-        { name = 'emoji' },
       }),
       formatting = {
         format = require 'lspkind'.cmp_format {
