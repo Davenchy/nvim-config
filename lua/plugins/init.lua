@@ -104,6 +104,3 @@ return {
     opts = {},
   },
 }
-
-
--- write hello world function
