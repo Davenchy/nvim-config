@@ -1,6 +1,7 @@
 -- replacment for null-ls
 return {
   "nvimtools/none-ls.nvim",
+  disabled = true,
   dependencies = {
     "nvim-lua/plenary.nvim",
     "davidmh/cspell.nvim",
@@ -12,7 +13,8 @@ return {
     null_ls.setup({
       sources = {
         null_ls.builtins.completion.spell,
-        null_ls.builtins.completion.luasnip,
+        -- deleted to fix luasnip and nvim-cmp duplications and errors
+        -- null_ls.builtins.completion.luasnip,
 
         null_ls.builtins.diagnostics.checkmake,
         null_ls.builtins.diagnostics.commitlint,
