@@ -23,13 +23,10 @@ return {
   },
   {
     "Exafunction/codeium.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "hrsh7th/nvim-cmp",
-    },
-    opts = {
-      enable_chat = true,
-    },
+    cmd = "Codeium",
+    event = 'BufEnter',
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = { enable_chat = true },
   },
   {
     'nvim-lualine/lualine.nvim',
@@ -65,7 +62,7 @@ return {
     "folke/zen-mode.nvim",
     opts = {
       plugins = {
-        options  = {
+        options = {
           ruler = true,
           showcmd = true,
         },
@@ -83,8 +80,7 @@ return {
     config = function()
       local ft = require 'FTerm'
 
-      ft.setup{}
-      
+      ft.setup {}
       local function def(name, command)
         vim.api.nvim_create_user_command(name, command, { bang = true })
       end
@@ -93,16 +89,18 @@ return {
       def('FTermClose', ft.close)
       def('FTermToggle', ft.toggle)
       def('FTermExit', ft.exit)
-
     end
   },
   {
-  'phaazon/hop.nvim',
-  branch = 'v2', -- optional but strongly recommended
-  cmd = 'HopWordMW',
-  keys = {
-    {'gw', ':HopWordMW<CR>', desc = "Hop [g]o to [w]ord"}
-  },
-  opts = {},
+    'phaazon/hop.nvim',
+    branch = 'v2', -- optional but strongly recommended
+    cmd = 'HopWordMW',
+    keys = {
+      { 'gw', ':HopWordMW<CR>', desc = "Hop [g]o to [w]ord" }
+    },
+    opts = {},
   },
 }
+
+
+-- write hello world function
