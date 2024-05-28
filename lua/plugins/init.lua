@@ -110,5 +110,6 @@ return {
       {'-', '<CMD>Oil<CR>', desc = 'Open parent directory'},
     },
     opts = {},
-  }
+  },
+  "voldikss/vim-floaterm",
 }

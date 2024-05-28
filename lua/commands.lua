@@ -24,3 +24,8 @@ vim.api.nvim_create_user_command('CopyScreen', function()
 end, {
   desc = "Copy the code as a screenshot using silicon cli tool",
 })
+
+vim.api.nvim_create_user_command(
+  'LazyGit',
+  ':FloatermNew --name=LazyGit --width=1.0 --height=1.0 --autoclose=2 lazygit',
+  { desc = "Open floating lazygit" })
