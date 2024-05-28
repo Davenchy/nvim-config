@@ -21,13 +21,16 @@ return {
       cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
     end,
   },
-  {
+  { -- this codeium plugin, works well with nvim-cmp
     "Exafunction/codeium.nvim",
-    cmd = "Codeium",
     event = 'BufEnter',
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = { enable_chat = true },
   },
+  -- { -- this codeium plugin, renders ghost/virtual text
+  --   "Exafunction/codeium.vim",
+  --   event = 'BufEnter',
+  -- },
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
