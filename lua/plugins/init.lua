@@ -1,29 +1,29 @@
 return {
-  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+  "tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  { "numToStr/Comment.nvim", opts = {} },
   { -- Add indentation guides even on blank lines
-    'lukas-reineke/indent-blankline.nvim',
+    "lukas-reineke/indent-blankline.nvim",
     -- See `:help ibl`
-    main = 'ibl',
+    main = "ibl",
     opts = {},
   },
   {
-    'windwp/nvim-autopairs',
-    event = 'InsertEnter',
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
     -- Optional dependency
-    dependencies = { 'hrsh7th/nvim-cmp' },
+    dependencies = { "hrsh7th/nvim-cmp" },
     config = function()
-      require('nvim-autopairs').setup {}
+      require("nvim-autopairs").setup({})
       -- If you want to automatically add `(` after selecting a function or method
-      local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
-      local cmp = require 'cmp'
-      cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
+      local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+      local cmp = require("cmp")
+      cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
     end,
   },
   { -- this codeium plugin, works well with nvim-cmp
     "Exafunction/codeium.nvim",
-    event = 'BufEnter',
+    event = "BufEnter",
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = { enable_chat = true },
   },
@@ -32,8 +32,8 @@ return {
   --   event = 'BufEnter',
   -- },
   {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
       options = {
         theme = "tokyonight",
@@ -42,7 +42,7 @@ return {
   },
   {
     "folke/todo-comments.nvim",
-    event = 'VimEnter',
+    event = "VimEnter",
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {},
   },
@@ -55,7 +55,7 @@ return {
   {
     "danymat/neogen",
     keys = {
-      { '<leader>cg', ':Neogen<CR>', desc = "[G]enerate Docs" },
+      { "<leader>cg", ":Neogen<CR>", desc = "[G]enerate Docs" },
     },
     opts = {
       snippet_engine = "luasnip",
@@ -81,33 +81,33 @@ return {
   {
     "numToStr/FTerm.nvim",
     config = function()
-      local ft = require 'FTerm'
+      local ft = require("FTerm")
 
-      ft.setup {}
+      ft.setup({})
       local function def(name, command)
         vim.api.nvim_create_user_command(name, command, { bang = true })
       end
 
-      def('FTermOpen', ft.open)
-      def('FTermClose', ft.close)
-      def('FTermToggle', ft.toggle)
-      def('FTermExit', ft.exit)
-    end
+      def("FTermOpen", ft.open)
+      def("FTermClose", ft.close)
+      def("FTermToggle", ft.toggle)
+      def("FTermExit", ft.exit)
+    end,
   },
   {
-    'phaazon/hop.nvim',
-    branch = 'v2', -- optional but strongly recommended
-    cmd = 'HopWordMW',
+    "phaazon/hop.nvim",
+    branch = "v2", -- optional but strongly recommended
+    cmd = "HopWordMW",
     keys = {
-      { 'gw', ':HopWordMW<CR>', desc = "Hop [g]o to [w]ord" }
+      { "gw", ":HopWordMW<CR>", desc = "Hop [g]o to [w]ord" },
     },
     opts = {},
   },
   {
-    'stevearc/oil.nvim',
+    "stevearc/oil.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     keys = {
-      {'-', '<CMD>Oil<CR>', desc = 'Open parent directory'},
+      { "-", "<CMD>Oil<CR>", desc = "Open parent directory" },
     },
     opts = {},
   },
