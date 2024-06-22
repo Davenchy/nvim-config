@@ -151,52 +151,15 @@ return {
           -- code, if the language server you are using supports them
           --
           -- This may be unwanted, since they displace some of your code
-          if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
-            map('<leader>uh', function()
+          if
+            client
+            and client.server_capabilities.inlayHintProvider
+            and vim.lsp.inlay_hint
+          then
+            map("<leader>uh", function()
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-            end, 'Toggle Inlay [H]ints')
+            end, "Toggle Inlay [H]ints")
           end
-        end
-      })
-    end,
-  },
-  { -- Linting
-    'mfussenegger/nvim-lint',
-    event = { 'BufReadPre', 'BufNewFile' },
-    dependencies = { 'rshkarin/mason-nvim-lint' },
-    config = function()
-      local lint = require 'lint'
-      local config = lint.linters_by_ft or {}
-
-      config['markdown'] = { 'markdownlint' }
-      config['clojure'] = nil
-      config['inko'] = nil
-      config['janet'] = nil
-      config['rst'] = nil
-      config['ruby'] = nil
-
-      lint.linters_by_ft = config
-
-      require 'mason-nvim-lint'.setup {
-        ensure_installed = {
-          'tflint',
-          'vale',
-          'markdownlint',
-          'jsonlint',
-          'hadolint',
-          'selene',
-          'trivy',
-          'eslint_d',
-        }
-      }
-
-      -- Create autocommand which carries out the actual linting
-      -- on the specified events.
-      local lint_augroup = vim.api.nvim_create_augroup('lint', { clear = true })
-      vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave' }, {
-        group = lint_augroup,
-        callback = function()
-          require('lint').try_lint()
         end,
       })
     end,
