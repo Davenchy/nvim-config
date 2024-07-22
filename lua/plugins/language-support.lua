@@ -153,6 +153,18 @@ return {
           --  See `:help K` for why this keymap.
           map("K", vim.lsp.buf.hover, "Hover Documentation")
 
+          -- toggle inlay hints !WARN: only works for neovim v0.10+
+          map("<leader>ui", function()
+            if vim.lsp.inlay_hint then
+              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+            end
+          end, "Toggle [I]nlay [H]ints")
+
+          -- by default, enable lsp_inlay_hints
+          if vim.lsp.inlay_hint then
+            vim.lsp.inlay_hint.enable(true)
+          end
+
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
           --    See `:help CursorHold` for information about when this is executed
