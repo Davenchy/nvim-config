@@ -39,7 +39,6 @@ return {
           },
         },
         pyright = {},
-        rust_analyzer = {},
       }
 
       -- other tools to ensure that they are installed
@@ -210,5 +209,12 @@ return {
         end,
       })
     end,
+  },
+  { "rust-lang/rust.vim" },
+  { -- !WARN: requires rust-analyzer, if u r using rustup then add rust-analyzer component
+    -- $ rustup component add rust-analyzer
+    "mrcjkb/rustaceanvim",
+    version = "^4", -- Recommended
+    lazy = false, -- This plugin is already lazy
   },
 }
