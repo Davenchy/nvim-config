@@ -30,12 +30,46 @@ return {
       -- add custom server config
       -- check :h lspconfig-all
       local servers = {
-        lua_ls = {},
-        tsserver = {},
+        lua_ls = {
+          settings = {
+            Lua = {
+              hint = {
+                enable = true, -- necessary
+              },
+            },
+          },
+        },
+        tsserver = {
+          settings = {
+            tsserver = {
+              inlayHints = {
+                includeInlayParameterNameHints = "all",
+                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHints = true,
+                includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
+              },
+            },
+          },
+        },
         bashls = {},
         clangd = {
           capabilities = {
             offsetEncoding = "utf-8",
+          },
+          settings = {
+            clangd = {
+              InlayHints = {
+                Designators = true,
+                Enabled = true,
+                ParameterNames = true,
+                DeducedTypes = true,
+              },
+              fallbackFlags = { "-std=c++20" },
+            },
           },
         },
         pyright = {},
