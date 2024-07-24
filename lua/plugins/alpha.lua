@@ -1,18 +1,23 @@
 return {
-  'goolord/alpha-nvim',
+  "goolord/alpha-nvim",
   dependencies = {
-    'nvim-tree/nvim-web-devicons',
-    'nvim-lua/plenary.nvim'
+    "nvim-tree/nvim-web-devicons",
+    "nvim-lua/plenary.nvim",
   },
   config = function()
-    local theta = require 'alpha.themes.theta'
-    local button = require 'alpha.themes.dashboard'.button
+    local theta = require("alpha.themes.theta")
+    local button = require("alpha.themes.dashboard").button
     local buttons = {
       type = "group",
       val = {
-        { type = "text",    val = "Quick links", opts = { hl = "SpecialComment", position = "center" } },
+        {
+          type = "text",
+          val = "Quick links",
+          opts = { hl = "SpecialComment", position = "center" },
+        },
         { type = "padding", val = 1 },
         button("e", "  New file", "<cmd>ene<CR>"),
+        button("e", "  Browse Files", "<cmd>Oil<CR>"),
         button("SPC s f", "󰈞  Find file"),
         button("SPC s g", "󰊄  Live grep"),
         button("c", "  Configuration", "<cmd>cd ~/.config/nvim/ <CR>"),
@@ -44,8 +49,7 @@ return {
       },
     }
 
-
-    require 'alpha'.setup({
+    require("alpha").setup({
       layout = {
         { type = "padding", val = 2 },
         theta.config.header,
@@ -56,5 +60,5 @@ return {
       },
       opts = theta.config.opts,
     })
-  end
+  end,
 }
