@@ -17,7 +17,7 @@ return {
         },
         { type = "padding", val = 1 },
         button("e", "  New file", "<cmd>ene<CR>"),
-        button("e", "  Browse Files", "<cmd>Oil<CR>"),
+        button("-", "  Browse Files", "<cmd>Oil<CR>"),
         button("SPC s f", "󰈞  Find file"),
         button("SPC s g", "󰊄  Live grep"),
         button("c", "  Configuration", "<cmd>cd ~/.config/nvim/ <CR>"),
