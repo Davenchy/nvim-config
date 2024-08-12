@@ -73,6 +73,7 @@ return {
           },
         },
         pyright = {},
+        pylsp = {},
       }
 
       -- other tools to ensure that they are installed

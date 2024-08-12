@@ -6,9 +6,9 @@ return {
     local lint = require("lint")
     lint.linters_by_ft = {
       markdown = { "vale", "markdownlint" },
-      python = { "pylint", "trivy" },
       typescript = { "biomejs", "trivy" },
       javascript = { "biomejs", "trivy" },
+      python = { "flake8", "pylint", "trivy" },
     }
 
     require("mason-nvim-lint").setup({

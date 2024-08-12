@@ -4,7 +4,7 @@ return {
   opts = {
     formatters_by_ft = {
       lua = { "stylua" },
-      python = { "isort", "black" },
+      python = { "autoflake", "docformatter", "isort" },
       javascript = { "biome" },
       typescript = { "biome" },
     },
