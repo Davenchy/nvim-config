@@ -74,6 +74,8 @@ return {
         },
         pyright = {},
         pylsp = {},
+        marksman = {},
+        ["ltex-ls"] = {},
       }
 
       -- other tools to ensure that they are installed

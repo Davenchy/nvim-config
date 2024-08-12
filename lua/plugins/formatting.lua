@@ -7,6 +7,7 @@ return {
       python = { "autoflake", "docformatter", "isort" },
       javascript = { "biome" },
       typescript = { "biome" },
+      markdown = { "mdformat", "prettierd", "markdownlint" },
     },
     format_on_save = {
       lsp_fallback = true,
