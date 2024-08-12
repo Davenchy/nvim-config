@@ -5,7 +5,7 @@ return {
     formatters_by_ft = {
       lua = { "stylua" },
       python = { "isort", "black" },
-      javascript = { { "prettierd", "prettier" }, "biome" },
+      javascript = { "biome" },
       typescript = { "biome" },
     },
     format_on_save = {
