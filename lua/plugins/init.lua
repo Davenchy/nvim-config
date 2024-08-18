@@ -119,6 +119,15 @@ return {
   },
   "rcarriga/nvim-notify",
   {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "sindrets/diffview.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+    config = true,
+  },
+  {
     "folke/noice.nvim",
     event = "VeryLazy",
     opts = {

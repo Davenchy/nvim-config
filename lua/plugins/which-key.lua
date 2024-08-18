@@ -75,6 +75,17 @@ return {
         desc = "LazyGit",
       },
       { "<leader>tt", ":FTermToggle<CR>", desc = "Toggle floating terminal" },
+      { "<leader>g", group = "Git" },
+      { "<leader>gc", ":Neogit commit<CR>", desc = "Open Neogit Commit" },
+      { "<leader>gp", ":Neogit pull<CR>", desc = "Open Neogit Pull" },
+      { "<leader>gP", ":Neogit push<CR>", desc = "Open Neogit Push" },
+      {
+        "<leader>gb",
+        ":Telescope git_branches<CR>",
+        desc = "Open Telescope Git Branches",
+      },
+      { "<leader>gB", ":G blame<CR>", desc = "Open Git Blame" },
+      { "<leader>gd", ":DiffviewOpen<CR>", desc = "Open Diffview" },
     },
   },
 }
