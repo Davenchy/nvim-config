@@ -113,4 +113,5 @@ return {
     opts = {},
   },
   "voldikss/vim-floaterm",
+  "rcarriga/nvim-notify",
 }
