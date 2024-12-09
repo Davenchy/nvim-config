@@ -191,13 +191,6 @@ return {
           --  See `:help K` for why this keymap.
           map("K", vim.lsp.buf.hover, "Hover Documentation")
 
-          -- toggle inlay hints !WARN: only works for neovim v0.10+
-          map("<leader>ui", function()
-            if vim.lsp.inlay_hint then
-              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-            end
-          end, "Toggle [I]nlay [H]ints")
-
           -- by default, enable lsp_inlay_hints
           if vim.lsp.inlay_hint then
             vim.lsp.inlay_hint.enable(true)
@@ -241,20 +234,6 @@ return {
                 })
               end,
             })
-          end
-
-          -- The following autocommand is used to enable inlay hints in your
-          -- code, if the language server you are using supports them
-          --
-          -- This may be unwanted, since they displace some of your code
-          if
-            client
-            and client.server_capabilities.inlayHintProvider
-            and vim.lsp.inlay_hint
-          then
-            map("<leader>uh", function()
-              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-            end, "Toggle Inlay [H]ints")
           end
         end,
       })
