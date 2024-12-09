@@ -5,6 +5,7 @@ vim.g.have_nerd_font = true
 
 vim.opt.background = "dark"
 vim.opt.number = true
+vim.opt.relativenumber = true
 vim.opt.cursorline = true
 vim.opt.confirm = true
 vim.opt.mouse = "a"
