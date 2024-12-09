@@ -76,6 +76,7 @@ return {
         pylsp = {},
         marksman = {},
         ["ltex-ls"] = {},
+        eslint = {},
       }
 
       -- other tools to ensure that they are installed
