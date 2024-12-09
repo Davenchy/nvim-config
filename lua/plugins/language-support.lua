@@ -97,6 +97,12 @@ return {
         vim.lsp.protocol.make_client_capabilities()
       )
 
+      -- ufo folding support
+      capabilities.textDocument.foldingRange = {
+        dynamicRegistration = false,
+        lineFoldingOnly = true,
+      }
+
       -- Automatic LSP Server Setup.
       -- for more information, check:
       -- :h mason-lspconfig-automatic-server-setup
