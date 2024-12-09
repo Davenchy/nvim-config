@@ -5,7 +5,6 @@ return {
     spec = {
       { "<leader>h", group = "Git" },
       { "<leader>s", group = "Search" },
-      { "<leader>t", group = "Terminal" },
       { "<leader>u", group = "UI" },
       {
         "<leader>?",
@@ -67,14 +66,6 @@ return {
         desc = "Trouble Todo Comments",
       },
       { "<leader>xs", ":Trouble symbols toggle<CR>", desc = "Symbols" },
-      {
-        "<leader>tl",
-        function()
-          require("FTerm").scratch({ cmd = { "lazygit" } })
-        end,
-        desc = "LazyGit",
-      },
-      { "<leader>tt", ":FTermToggle<CR>", desc = "Toggle floating terminal" },
       { "<leader>g", group = "Git" },
       { "<leader>gc", ":Neogit commit<CR>", desc = "Open Neogit Commit" },
       { "<leader>gp", ":Neogit pull<CR>", desc = "Open Neogit Pull" },

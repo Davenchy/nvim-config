@@ -79,22 +79,6 @@ return {
     },
   },
   {
-    "numToStr/FTerm.nvim",
-    config = function()
-      local ft = require("FTerm")
-
-      ft.setup({})
-      local function def(name, command)
-        vim.api.nvim_create_user_command(name, command, { bang = true })
-      end
-
-      def("FTermOpen", ft.open)
-      def("FTermClose", ft.close)
-      def("FTermToggle", ft.toggle)
-      def("FTermExit", ft.exit)
-    end,
-  },
-  {
     "phaazon/hop.nvim",
     branch = "v2", -- optional but strongly recommended
     cmd = "HopWord",
@@ -112,7 +96,6 @@ return {
     },
     opts = {},
   },
-  "voldikss/vim-floaterm",
   {
     "stevearc/dressing.nvim",
     opts = {},

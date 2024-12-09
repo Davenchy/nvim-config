@@ -47,9 +47,5 @@ map("<C-S-tab>", "gT", "Goto previous tab")
 map("<C-n>", ":tabnew<CR>", "Create a new tab")
 map("<C-c>", ":tabclose<CR>", "Close tab")
 
--- Open Terminals
-map("<leader>|", ":vsplit +term<CR>:start<CR>", "Open Vertical Terminal")
-map("<leader>_", ":split +term<CR>:start<CR>", "Open Horizontal Terminal")
-
 -- Toggle ZenMode
 map("<leader>z", ":ZenMode<CR>", "Toggle ZenMode")
