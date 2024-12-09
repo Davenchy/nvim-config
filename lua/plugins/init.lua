@@ -27,10 +27,6 @@ return {
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = { enable_chat = true },
   },
-  -- { -- this codeium plugin, renders ghost/virtual text
-  --   "Exafunction/codeium.vim",
-  --   event = 'BufEnter',
-  -- },
   {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -94,11 +90,11 @@ return {
     keys = {
       { "-", "<CMD>Oil<CR>", desc = "Open parent directory" },
     },
-    opts = {},
+    config = true,
   },
   {
     "stevearc/dressing.nvim",
-    opts = {},
+    config = true,
   },
   {
     "NeogitOrg/neogit",
@@ -119,11 +115,7 @@ return {
       },
     },
     dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
       "MunifTanjim/nui.nvim",
-      -- OPTIONAL:
-      --   `nvim-notify` is only needed, if you want to use the notification view.
-      --   If not available, we use `mini` as the fallback
     },
   },
 }
