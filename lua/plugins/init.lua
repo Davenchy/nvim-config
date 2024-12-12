@@ -123,4 +123,16 @@ return {
     dependencies = { "kevinhwang91/promise-async" },
     config = true,
   },
+  {
+    "mistricky/codesnap.nvim",
+    build = "make",
+    opts = {
+      mac_window_bar = false,
+      has_breadcrumbs = true,
+      has_line_number = true,
+      show_workspace = true,
+      watermark = "Coded By Davenchy",
+      bg_theme = "grape",
+    },
+  },
 }
