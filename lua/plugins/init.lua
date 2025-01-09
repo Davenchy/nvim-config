@@ -36,7 +36,7 @@ return {
       },
     },
   },
-  {
+  { -- add todo/fix/info/warn flags to comments with highlights
     "folke/todo-comments.nvim",
     event = "VimEnter",
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -47,8 +47,9 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {},
   },
+  -- trace coding activity and time spent
   { "wakatime/vim-wakatime", lazy = false },
-  {
+  { -- generate code annotations and doc comments
     "danymat/neogen",
     keys = {
       { "<leader>cg", ":Neogen<CR>", desc = "[G]enerate Docs" },
@@ -57,7 +58,7 @@ return {
       snippet_engine = "luasnip",
     },
   },
-  {
+  { -- to focus on a piece of code, if many windows are open
     "folke/zen-mode.nvim",
     opts = {
       plugins = {
@@ -68,13 +69,13 @@ return {
       },
     },
   },
-  {
+  { -- to focus on a piece of code while zen mode activated
     "folke/twilight.nvim",
     opts = {
       alpha = 0.50,
     },
   },
-  {
+  { -- for quick movement betwwen words
     "phaazon/hop.nvim",
     branch = "v2", -- optional but strongly recommended
     cmd = "HopWord",
@@ -83,7 +84,7 @@ return {
     },
     opts = {},
   },
-  {
+  { -- file management
     "stevearc/oil.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     cmd = "Oil",
@@ -92,11 +93,11 @@ return {
     },
     config = true,
   },
-  {
+  { -- better ui
     "stevearc/dressing.nvim",
     config = true,
   },
-  {
+  { -- git functionality
     "NeogitOrg/neogit",
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -105,7 +106,7 @@ return {
     },
     config = true,
   },
-  {
+  { -- for better ui
     "folke/noice.nvim",
     event = "VeryLazy",
     opts = {
@@ -118,12 +119,12 @@ return {
       "MunifTanjim/nui.nvim",
     },
   },
-  {
+  { -- for better and smart folds
     "kevinhwang91/nvim-ufo",
     dependencies = { "kevinhwang91/promise-async" },
     config = true,
   },
-  {
+  { -- to snap code into images
     "mistricky/codesnap.nvim",
     build = "make",
     opts = {
