@@ -1,99 +1,81 @@
 return {
-  "hrsh7th/nvim-cmp",
+  "saghen/blink.cmp",
   dependencies = {
-    "onsails/lspkind.nvim",
-    "hrsh7th/cmp-cmdline",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-calc",
-    "hrsh7th/cmp-emoji",
-    "ray-x/cmp-treesitter",
-    "saadparwaiz1/cmp_luasnip",
-    "https://codeberg.org/FelipeLema/cmp-async-path",
+    "rafamadriz/friendly-snippets",
+    "moyiz/blink-emoji.nvim",
+    "mikavilpas/blink-ripgrep.nvim",
+    "saghen/blink.compat",
   },
-  config = function()
-    local cmp = require("cmp")
+  version = "*",
 
-    cmp.setup({
-      snippet = {
-        expand = function(args)
-          require("luasnip").lsp_expand(args.body)
+  ---@module 'blink.cmp'
+  ---@type blink.cmp.Config
+  opts = {
+    keymap = { preset = "enter", cmdline = { preset = "enter" } },
+    appearance = {
+      use_nvim_cmp_as_default = true,
+      -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+      -- Adjusts spacing to ensure icons are aligned
+      nerd_font_variant = "normal",
+    },
+    completion = {
+      keyword = { range = "full" },
+      list = {
+        selection = function(ctx)
+          return ctx.mode == "cmdline" and "auto_insert" or "preselect"
         end,
       },
-      window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
+      documentation = {
+        window = { border = "rounded" },
+        --   auto_show = true,
+        --   auto_show_delay_ms = 500,
       },
-      mapping = cmp.mapping.preset.insert({
-        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        ["<C-Space>"] = cmp.mapping.complete(),
-        ["<C-e>"] = cmp.mapping.abort(),
-        ["<CR>"] = cmp.mapping.confirm({ select = true }),
-        ["<C-l>"] = cmp.mapping(function()
-          local ls = require("luasnip")
-          if ls.expand_or_locally_jumpable() then
-            ls.expand_or_jump()
-          end
-        end, { "i", "s" }),
-        ["<C-h>"] = cmp.mapping(function()
-          local ls = require("luasnip")
-          if ls.locally_jumpable(-1) then
-            ls.jump(-1)
-          end
-        end, { "i", "s" }),
-        ["<C-k>"] = function()
-          if cmp.visible_docs() then
-            cmp.close_docs()
-          else
-            cmp.open_docs()
-          end
-        end,
-      }),
-      sources = cmp.config.sources({
-        { name = "calc" },
-        { name = "codeium" },
-        { name = "nvim_lsp" },
-        { name = "treesitter" },
-        {
-          name = "luasnip",
-          option = {
-            show_autosnippets = true,
-            use_show_condition = false,
+      menu = {
+        border = "rounded",
+        draw = {
+          columns = {
+            { "label", "label_description", gap = 1 },
+            { "kind_icon", "kind" },
           },
         },
-        { name = "emoji" },
-      }, {
-        { name = "async_path" },
-        { name = "buffer" },
-      }),
-      formatting = {
-        format = require("lspkind").cmp_format({
-          mode = "symbol_text",
-          symbol_map = {
-            Codeium = "",
-          },
-        }),
       },
-      experimental = { ghost_text = true },
-    })
-
-    -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-    cmp.setup.cmdline({ "/", "?" }, {
-      mapping = cmp.mapping.preset.cmdline(),
-      sources = {
-        { name = "buffer" },
+      ghost_text = { enabled = true },
+    },
+    -- Default list of enabled providers defined so that you can extend it
+    -- elsewhere in your config, without redefining it, due to `opts_extend`
+    sources = {
+      -- !TODO: add codeium, calc, treesitter, snips, emoijs
+      default = {
+        "codeium",
+        "lazydev",
+        "lsp",
+        "path",
+        "snippets",
+        "buffer",
+        "ripgrep",
+        "emoji",
       },
-    })
-
-    -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-    cmp.setup.cmdline(":", {
-      mapping = cmp.mapping.preset.cmdline(),
-      sources = cmp.config.sources({
-        { name = "cmdline" },
-        { name = "async_path" },
-        { name = "buffer" },
-      }),
-      matching = { disallow_symbol_nonprefix_matching = false },
-    })
-  end,
+      providers = {
+        codeium = {
+          name = "codeium",
+          module = "blink.compat.source",
+        },
+        lazydev = {
+          name = "LazyDev",
+          module = "lazydev.integrations.blink",
+          score_offset = 100,
+        },
+        emoji = {
+          name = "Emoji",
+          module = "blink-emoji",
+        },
+        ripgrep = {
+          name = "Ripgrep",
+          module = "blink-ripgrep",
+        },
+      },
+    },
+    signature = { enabled = true, window = { border = "rounded" } },
+  },
+  opts_extend = { "sources.default" },
 }
