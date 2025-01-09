@@ -5,7 +5,7 @@ return {
   config = function()
     local lint = require("lint")
     lint.linters_by_ft = {
-      markdown = { "vale", "markdownlint" },
+      markdown = { "markdownlint" },
       typescript = { "biomejs", "trivy" },
       javascript = { "biomejs", "trivy" },
       python = { "flake8", "pylint", "trivy" },
@@ -14,7 +14,6 @@ return {
     require("mason-nvim-lint").setup({
       ensure_installed = {
         "tflint",
-        "vale",
         "markdownlint",
         "jsonlint",
         "hadolint",
