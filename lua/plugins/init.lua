@@ -135,4 +135,17 @@ return {
       bg_theme = "grape",
     },
   },
+  { -- support for neovim config editing
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    -- !INFO: config blink or cmp to use lazydev
+    config = true,
+    -- opts = {
+    --   library = {
+    --     -- See the configuration section for more details
+    --     -- Load luvit types when the `vim.uv` word is found
+    --     { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+    --   },
+    -- },
+  },
 }
