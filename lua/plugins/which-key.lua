@@ -6,6 +6,10 @@ return {
       { "<leader>h", group = "Git" },
       { "<leader>s", group = "Search" },
       { "<leader>u", group = "UI" },
+      { "<leader>a", group = "Avante AI" },
+      { "<leader>h", group = "Git Hunk", mode = "v" },
+      { "<leader>a", group = "Avante AI", mode = "v" },
+      { "<leader>c", group = "Code", mode = "v" },
       {
         "<leader>?",
         function()

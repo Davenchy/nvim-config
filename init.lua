@@ -12,8 +12,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("options")
-require("commands")
-require("mappings")
 require("lazy").setup("plugins", {
   ui = {
     icons = {
@@ -33,3 +31,5 @@ require("lazy").setup("plugins", {
     },
   },
 })
+require("commands")
+require("mappings")
