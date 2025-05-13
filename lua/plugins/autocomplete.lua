@@ -44,9 +44,7 @@ return {
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
-      -- !TODO: add codeium, calc, treesitter, snips, emoijs
       default = {
-        "codeium",
         "lazydev",
         "lsp",
         "path",
@@ -56,10 +54,6 @@ return {
         "emoji",
       },
       providers = {
-        codeium = {
-          name = "codeium",
-          module = "blink.compat.source",
-        },
         lazydev = {
           name = "LazyDev",
           module = "lazydev.integrations.blink",

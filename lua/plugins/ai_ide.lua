@@ -1,6 +1,6 @@
 return {
-  { -- disabled until blink integration complete
-    "Exafunction/codeium.nvim",
+  {
+    "Exafunction/windsurf.vim",
     event = "BufEnter",
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = { enable_chat = true },
@@ -9,6 +9,7 @@ return {
     "yetone/avante.nvim",
     event = "VeryLazy",
     lazy = false,
+    enabled = false,
     dependencies = {
       "stevearc/dressing.nvim",
       "nvim-lua/plenary.nvim",
