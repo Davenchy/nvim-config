@@ -1,27 +1,28 @@
 return {
   "mfussenegger/nvim-lint",
   event = { "BufReadPre", "BufNewFile", "BufWritePost" },
-  dependencies = { "rshkarin/mason-nvim-lint", "davidmh/cspell.nvim" },
-  config = function()
-    local lint = require("lint")
-    lint.linters_by_ft = {
-      markdown = { "markdownlint" },
-      typescript = { "biomejs", "trivy" },
-      javascript = { "biomejs", "trivy" },
-      python = { "flake8", "pylint", "trivy" },
-    }
-
-    require("mason-nvim-lint").setup({
-      ensure_installed = {
-        "tflint",
-        "markdownlint",
-        "jsonlint",
-        "hadolint",
-        "selene",
-        "trivy",
-        "biome",
+  dependencies = {
+    {
+      "rshkarin/mason-nvim-lint",
+      opts = {
+        automatic_installation = true,
+        ignore_install = { "typos", "biomejs" },
       },
-    })
+    },
+  },
+  config = function()
+    -- get linter names from the repo readme
+    require("lint").linters_by_ft = {
+      dockerfile = { "hadolint" },
+      markdown = { "markdownlint" },
+      typescript = { "biomejs" },
+      javascript = { "biomejs" },
+      python = { "flake8", "pylint" },
+      make = { "checkmake" },
+      sh = { "shellcheck" },
+      json = { "jsonlint" },
+      bash = { "shellcheck" },
+    }
 
     -- Create autocommand which carries out the actual linting
     -- on the specified events.
@@ -34,8 +35,8 @@ return {
       group = lint_augroup,
       callback = function()
         require("lint").try_lint()
-        -- uses a lot of processor power
-        -- require("lint").try_lint("cspell")
+        require("lint").try_lint("typos")
+        require("lint").try_lint("trivy")
       end,
     })
   end,
