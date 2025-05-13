@@ -2,8 +2,6 @@ return {
   "neovim/nvim-lspconfig",
   dependencies = {
     { "saghen/blink.cmp" },
-    { "williamboman/mason.nvim", opts = {} },
-    { "williamboman/mason-lspconfig.nvim", opts = { auto_install = true } },
     { "j-hui/fidget.nvim", opts = {} },
     { "rust-lang/rust.vim" },
     { -- !WARN: requires rust-analyzer, if u r using rustup then add rust-analyzer component
@@ -12,9 +10,8 @@ return {
       version = "^4", -- Recommended
       lazy = false, -- This plugin is already lazy
     },
-    "WhoIsSethDaniel/mason-tool-installer.nvim",
   },
-  opts = {
+  _opts = {
     -- add custom server config
     -- check :h lspconfig-all
     servers = {
@@ -68,39 +65,13 @@ return {
     },
     tools = {
       "stylua",
+      "lua-language-server",
+      "shellcheck",
+      "luacheck",
+      "misspell",
     },
   },
-  config = function(_, opts)
-    local lspconfig = require("lspconfig")
-
-    -- ensure that servers and tools are installed
-    local ensure_installed = vim.tbl_keys(opts.servers)
-    vim.list_extend(ensure_installed, opts.tools)
-    require("mason-tool-installer").setup({
-      ensure_installed = ensure_installed,
-    })
-
-    -- Automatic LSP Server Setup.
-    -- for more information, check:
-    -- :h mason-lspconfig-automatic-server-setup
-    require("mason-lspconfig").setup_handlers({
-      function(server_name)
-        local config = opts.servers[server_name] or {}
-
-        -- generate default client capabilities
-        config.capabilities =
-          require("blink.cmp").get_lsp_capabilities(config.capabilities)
-
-        -- ufo folding support
-        config.capabilities.textDocument.foldingRange = {
-          dynamicRegistration = false,
-          lineFoldingOnly = true,
-        }
-
-        lspconfig[server_name].setup(config)
-      end,
-    })
-
+  config = function()
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("LspAttach_au", { clear = true }),
       callback = function(event)
