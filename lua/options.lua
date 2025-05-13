@@ -27,7 +27,7 @@ vim.opt.expandtab = true -- use spaces
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.wrap = false
-vim.opt.colorcolumn = "+1"
+-- vim.opt.colorcolumn = "+1"
 vim.opt.scrolloff = 5
 vim.opt.hidden = true
 vim.opt.wildmode = { "longest", "full" }
@@ -38,9 +38,13 @@ vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 vim.opt.hlsearch = true
 vim.opt.list = true
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+vim.opt.spell = true
 
 -- folding
 vim.o.foldenable = true
 vim.o.foldcolumn = "0"
 vim.o.foldlevel = 99
 vim.o.foldlevelstart = 99
+
+-- diagnostics
+vim.diagnostic.config({ virtual_lines = true })
