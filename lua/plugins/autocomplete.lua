@@ -11,7 +11,7 @@ return {
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
   opts = {
-    keymap = { preset = "enter", cmdline = { preset = "enter" } },
+    keymap = { preset = "enter" },
     appearance = {
       use_nvim_cmp_as_default = true,
       -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
@@ -21,9 +21,13 @@ return {
     completion = {
       keyword = { range = "full" },
       list = {
-        selection = function(ctx)
-          return ctx.mode == "cmdline" and "auto_insert" or "preselect"
-        end,
+        selection = {
+          preselect = function(ctx)
+            return ctx.mode ~= "cmdline"
+              and not require("blink.cmp").snippet_active({ direction = 1 })
+          end,
+          -- auto_insert = function(ctx) return ctx.mode ~= 'cmdline' end,
+        },
       },
       documentation = {
         window = { border = "rounded" },
@@ -39,7 +43,7 @@ return {
           },
         },
       },
-      ghost_text = { enabled = true },
+      ghost_text = { enabled = false },
     },
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
