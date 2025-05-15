@@ -104,6 +104,7 @@ return {
   },
   { -- file management
     "stevearc/oil.nvim",
+    enabled = false,
     dependencies = { "nvim-tree/nvim-web-devicons" },
     cmd = "Oil",
     keys = {

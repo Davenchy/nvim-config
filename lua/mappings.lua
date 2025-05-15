@@ -14,6 +14,7 @@ require("which-key").add({
   { "<C-x>", ":bdelete<CR>", desc = "Close Buffer" },
   { "<C-q>", ":qa<CR>", desc = "Quit Neovim" },
   { "<Esc>", ":nohl<CR>", desc = "Clear all search highlights" },
+  { "<C-e>", ":lua Snacks.explorer.reveal()<CR>", desc = "Open Explorer" },
 
   -- Terminal
   { mode = "t", "<Esc><Esc>", "<C-\\><C-n>", desc = "Exit terminal mode" },
