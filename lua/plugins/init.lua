@@ -50,7 +50,7 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
       options = {
-        theme = "tokyonight",
+        theme = "onedark",
       },
     },
   },
@@ -93,7 +93,7 @@ return {
       alpha = 0.50,
     },
   },
-  { -- for quick movement betwwen words
+  { -- for quick movement between words
     "phaazon/hop.nvim",
     branch = "v2", -- optional but strongly recommended
     cmd = "HopWord",
