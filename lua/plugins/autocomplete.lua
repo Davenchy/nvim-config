@@ -2,7 +2,7 @@ return {
   "saghen/blink.cmp",
   dependencies = {
     "rafamadriz/friendly-snippets",
-    "moyiz/blink-emoji.nvim",
+--     "moyiz/blink-emoji.nvim",
     "mikavilpas/blink-ripgrep.nvim",
     "saghen/blink.compat",
   },
@@ -55,7 +55,7 @@ return {
         "snippets",
         "buffer",
         "ripgrep",
-        "emoji",
+--         "emoji",
       },
       providers = {
         lazydev = {
@@ -63,10 +63,10 @@ return {
           module = "lazydev.integrations.blink",
           score_offset = 100,
         },
-        emoji = {
-          name = "Emoji",
-          module = "blink-emoji",
-        },
+--         emoji = {
+--           name = "Emoji",
+--           module = "blink-emoji",
+--         },
         ripgrep = {
           name = "Ripgrep",
           module = "blink-ripgrep",
