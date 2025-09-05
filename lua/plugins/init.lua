@@ -168,4 +168,21 @@ return {
     --   },
     -- },
   },
+  {
+    "mikavilpas/yazi.nvim",
+    event = "VeryLazy",
+    dependencies = { "nvim-lua/plenary.nvim", lazy = true },
+    keys = {
+      {
+        "<leader>-",
+        ":Yazi<CR>",
+        desc = "Yazi: current file",
+      },
+      {
+        "<leader>sy",
+        ":Yazi cwd<CR>",
+        desc = "Yazi: current file",
+      },
+    },
+  },
 }
