@@ -3,7 +3,6 @@ return {
     "Exafunction/windsurf.vim",
     event = "BufEnter",
     dependencies = { "nvim-lua/plenary.nvim" },
-    opts = { enable_chat = true },
   },
   {
     "yetone/avante.nvim",
