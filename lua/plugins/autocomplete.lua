@@ -2,11 +2,11 @@ return {
   "saghen/blink.cmp",
   dependencies = {
     "rafamadriz/friendly-snippets",
---     "moyiz/blink-emoji.nvim",
+    --     "moyiz/blink-emoji.nvim",
     "mikavilpas/blink-ripgrep.nvim",
     "saghen/blink.compat",
   },
-  version = "*",
+  version = "1.*",
 
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
@@ -16,15 +16,16 @@ return {
       use_nvim_cmp_as_default = true,
       -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
       -- Adjusts spacing to ensure icons are aligned
-      nerd_font_variant = "normal",
+      nerd_font_variant = "mono",
     },
     completion = {
       keyword = { range = "full" },
       list = {
         selection = {
           preselect = function(ctx)
-            return ctx.mode ~= "cmdline"
-              and not require("blink.cmp").snippet_active({ direction = 1 })
+            -- return ctx.mode ~= "cmdline"
+            --   and not require("blink.cmp").snippet_active({ direction = 1 })
+            return not require("blink.cmp").snippet_active({ direction = 1 })
           end,
           -- auto_insert = function(ctx) return ctx.mode ~= 'cmdline' end,
         },
@@ -55,7 +56,7 @@ return {
         "snippets",
         "buffer",
         "ripgrep",
---         "emoji",
+        --         "emoji",
       },
       providers = {
         lazydev = {
@@ -63,10 +64,10 @@ return {
           module = "lazydev.integrations.blink",
           score_offset = 100,
         },
---         emoji = {
---           name = "Emoji",
---           module = "blink-emoji",
---         },
+        --         emoji = {
+        --           name = "Emoji",
+        --           module = "blink-emoji",
+        --         },
         ripgrep = {
           name = "Ripgrep",
           module = "blink-ripgrep",
@@ -74,6 +75,8 @@ return {
       },
     },
     signature = { enabled = true, window = { border = "rounded" } },
+    -- fuzzy = { implementation = "prefer_rust_with_warning" },
+    fuzzy = { implementation = "lua" },
   },
   opts_extend = { "sources.default" },
 }
