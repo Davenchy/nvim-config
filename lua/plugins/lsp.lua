@@ -4,7 +4,8 @@ return {
     { "saghen/blink.cmp" },
     { "j-hui/fidget.nvim", opts = {} },
     { "rust-lang/rust.vim" },
-    { -- !WARN: requires rust-analyzer, if u r using rustup then add rust-analyzer component
+    {
+      -- !WARN: requires rust-analyzer, if u r using rustup then add rust-analyzer component
       -- $ rustup component add rust-analyzer
       "mrcjkb/rustaceanvim",
       version = "^4", -- Recommended
