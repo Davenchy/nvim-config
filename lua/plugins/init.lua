@@ -104,13 +104,41 @@ return {
   },
   { -- file management
     "stevearc/oil.nvim",
-    enabled = false,
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    lazy = false,
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+      {
+        "malewicz1337/oil-git.nvim",
+        dependencies = { "stevearc/oil.nvim" },
+        opts = {
+          show_file_highlights = true,
+          show_directory_highlights = true,
+          show_ignored_files = true,
+        },
+      },
+      {
+        "JezerM/oil-lsp-diagnostics.nvim",
+        dependencies = { "stevearc/oil.nvim" },
+        opts = {},
+      },
+    },
     cmd = "Oil",
     keys = {
       { "-", "<CMD>Oil<CR>", desc = "Open parent directory" },
     },
-    config = true,
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {
+      columns = {
+        "icon",
+        "permissions",
+        "size",
+        "mtime",
+      },
+      keymaps = {
+        ["gr"] = "actions.refresh",
+      },
+    },
   },
   { -- better ui
     "stevearc/dressing.nvim",
