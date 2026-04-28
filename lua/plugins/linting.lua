@@ -36,7 +36,6 @@ return {
       callback = function()
         require("lint").try_lint()
         require("lint").try_lint("typos")
-        require("lint").try_lint("trivy")
       end,
     })
   end,
