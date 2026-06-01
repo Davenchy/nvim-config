@@ -93,15 +93,6 @@ return {
       alpha = 0.50,
     },
   },
-  { -- for quick movement between words
-    "phaazon/hop.nvim",
-    branch = "v2", -- optional but strongly recommended
-    cmd = "HopWord",
-    keys = {
-      { "gw", ":HopWord<CR>", desc = "Hop [g]o to [w]ord" },
-    },
-    opts = {},
-  },
   { -- file management
     "stevearc/oil.nvim",
     lazy = false,
