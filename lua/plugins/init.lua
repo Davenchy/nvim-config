@@ -226,4 +226,14 @@ return {
     event = "BufEnter",
     dependencies = { "nvim-lua/plenary.nvim" },
   },
+  {
+    "mason-org/mason-lspconfig.nvim",
+    dependencies = {
+      "mason-org/mason.nvim",
+      "neovim/nvim-lspconfig",
+    },
+    opts = {
+      ensure_installed = { "lua_ls", "rust_analyzer", "ts_ls" },
+    },
+  },
 }
