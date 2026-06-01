@@ -55,9 +55,23 @@ return {
   },
   {
     "mason-org/mason.nvim",
-    opts = {
-      firewall = { enabled = true },
-    },
+    config = function()
+      require("mason").setup({
+        firewall = { enabled = true },
+      })
+
+      -- auto install tools (non-lsp)
+      local registry = require("mason-registry")
+      local tools = { "tree-sitter-cli" }
+
+      for _, tool in ipairs(tools) do
+        local p = registry.get_package(tool)
+        if not p:is_installed() then
+          vim.notify(("Installing %s..."):format(tool), vim.log.levels.INFO)
+          p:install()
+        end
+      end
+    end
   },
   {
     'nvim-telescope/telescope.nvim', version = '*',
