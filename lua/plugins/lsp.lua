@@ -12,66 +12,6 @@ return {
       lazy = false, -- This plugin is already lazy
     },
   },
-  _opts = {
-    -- add custom server config
-    -- check :h lspconfig-all
-    servers = {
-      lua_ls = {
-        settings = {
-          Lua = {
-            hint = {
-              enable = true, -- necessary
-            },
-          },
-        },
-      },
-      ts_ls = {
-        settings = {
-          tsserver = {
-            inlayHints = {
-              includeInlayParameterNameHints = "all",
-              includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-              includeInlayFunctionParameterTypeHints = true,
-              includeInlayVariableTypeHints = true,
-              includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-              includeInlayPropertyDeclarationTypeHints = true,
-              includeInlayFunctionLikeReturnTypeHints = true,
-              includeInlayEnumMemberValueHints = true,
-            },
-          },
-        },
-      },
-      bashls = {},
-      clangd = {
-        capabilities = {
-          offsetEncoding = "utf-8",
-        },
-        settings = {
-          clangd = {
-            InlayHints = {
-              Designators = true,
-              Enabled = true,
-              ParameterNames = true,
-              DeducedTypes = true,
-            },
-            fallbackFlags = { "-std=c++20" },
-          },
-        },
-      },
-      pyright = {},
-      pylsp = {},
-      marksman = {},
-      ["ltex-ls"] = {},
-      eslint = {},
-    },
-    tools = {
-      "stylua",
-      "lua-language-server",
-      "shellcheck",
-      "luacheck",
-      "misspell",
-    },
-  },
   config = function()
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("LspAttach_au", { clear = true }),
