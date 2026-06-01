@@ -53,8 +53,8 @@ return {
         "lazydev",
         "lsp",
         "path",
-        "snippets",
         "buffer",
+        "snippets",
         "ripgrep",
         --         "emoji",
       },
@@ -71,6 +71,7 @@ return {
         ripgrep = {
           name = "Ripgrep",
           module = "blink-ripgrep",
+          score_offset = 1000,
         },
       },
     },
