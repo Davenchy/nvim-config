@@ -74,7 +74,26 @@ return {
   },
   {
     "romus204/tree-sitter-manager.nvim",
-    opts = { auto_install = true },
+    opts = {
+      auto_install = true,
+      ensure_installed = {
+        "bash",
+        "c",
+        "cpp",
+        "css",
+        "go",
+        "html",
+        "javascript",
+        "json",
+        "lua",
+        "markdown",
+        "python",
+        "rust",
+        "tsx",
+        "typescript",
+        "yaml",
+      },
+    },
   },
   {
     'nvim-lualine/lualine.nvim',
