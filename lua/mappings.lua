@@ -40,8 +40,8 @@ require("which-key").add({
   { "<C-S-down>", ":horizontal resize -5<CR>", desc = "Scale bottom window" },
 
   -- Switch tabs using <C-tab>
-  { "<C-n>", ":tabnew<CR>", desc = "Create a new tab" },
-  { "<C-c>", ":tabclose<CR>", desc = "Close tab" },
+  -- { "<C-n>", ":tabnew<CR>", desc = "Create a new tab" },
+  -- { "<C-c>", ":tabclose<CR>", desc = "Close tab" },
 
   -- Toggle ZenMode
   { "<leader>z", ":ZenMode<CR>", desc = "Toggle ZenMode" },
