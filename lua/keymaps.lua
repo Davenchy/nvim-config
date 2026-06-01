@@ -24,8 +24,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
   callback = function(ev)
     local opts = { buffer = ev.buf, silent = true }
-    keymap("n", "gd", vim.lsp.buf.definition, opts, { desc = "Go to definition" })
-    keymap("n", "<leader>cf", vim.lsp.buf.format, opts, { desc = "Format buffer" })
+    keymap("n", "gd", vim.lsp.buf.definition, vim.tbl_extend("force", opts, { desc = "Go to definition" }))
+    keymap("n", "<leader>cf", vim.lsp.buf.format, vim.tbl_extend("force", opts, { desc = "Format buffer" }))
   end
 })
 
