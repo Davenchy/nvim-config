@@ -37,4 +37,12 @@ wk.add({
   { "<leader>x", group = "code analysis" },
   { "<leader>g", group = "Git/Github Tools" },
   { "gr", group = "LSP tools" },
+  {
+    "<leader>b", group = "Buffers",
+    expand = function()
+      return require("which-key.extras").expand.buf()
+    end
+  },
+  { "<leader>bb", ":b#<CR>", desc = "Switch to alternate buffer" },
+  { "<leader>bc", ":bdelete<CR>", desc = "Close current buffer" },
 })
