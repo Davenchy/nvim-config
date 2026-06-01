@@ -1,121 +1,43 @@
 return {
-  "tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
-  -- "gc" to comment visual regions/lines
-  { "numToStr/Comment.nvim", opts = {} },
-  { -- Add indentation guides even on blank lines
-    "lukas-reineke/indent-blankline.nvim",
-    -- See `:help ibl`
-    main = "ibl",
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    lazy = false,
+    priority = 1000,
     config = function()
-      local highlight = {
-        "RainbowRed",
-        "RainbowYellow",
-        "RainbowBlue",
-        "RainbowOrange",
-        "RainbowGreen",
-        "RainbowViolet",
-        "RainbowCyan",
-      }
-      local hooks = require("ibl.hooks")
-      -- create the highlight groups in the highlight setup hook, so they are reset
-      -- every time the colorscheme changes
-      hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-        vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75" })
-        vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#E5C07B" })
-        vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#61AFEF" })
-        vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#D19A66" })
-        vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379" })
-        vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
-        vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
-      end)
-
-      vim.g.rainbow_delimiters = { highlight = highlight }
-      require("ibl").setup({ scope = { highlight = highlight } })
-
-      hooks.register(
-        hooks.type.SCOPE_HIGHLIGHT,
-        hooks.builtin.scope_highlight_from_extmark
-      )
+      vim.cmd.colorscheme("catppuccin-mocha")
     end,
   },
   {
-    "windwp/nvim-autopairs",
-    event = "InsertEnter",
-    opts = {
-      map_cr = true,
-    },
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    opts = { preset = "helix" },
   },
+  { "neovim/nvim-lspconfig" },
   {
-    "nvim-lualine/lualine.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    "folke/lazydev.nvim",
+    ft = "lua",
     opts = {
-      options = {
-        theme = "onedark",
+      library = {
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
       },
     },
   },
-  { -- add todo/fix/info/warn flags to comments with highlights
-    "folke/todo-comments.nvim",
-    event = "VimEnter",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {},
-  },
   {
-    "folke/trouble.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    opts = {},
-  },
-  -- trace coding activity and time spent
-  { "wakatime/vim-wakatime", lazy = false },
-  { -- generate code annotations and doc comments
-    "danymat/neogen",
-    keys = {
-      { "<leader>cg", ":Neogen<CR>", desc = "[G]enerate Docs" },
-    },
-    opts = {
-      snippet_engine = "luasnip",
-    },
-  },
-  { -- to focus on a piece of code, if many windows are open
-    "folke/zen-mode.nvim",
-    opts = {
-      plugins = {
-        options = {
-          ruler = true,
-          showcmd = true,
-        },
-      },
-    },
-  },
-  { -- to focus on a piece of code while zen mode activated
-    "folke/twilight.nvim",
-    opts = {
-      alpha = 0.50,
-    },
-  },
-  { -- file management
-    "stevearc/oil.nvim",
-    lazy = false,
+    'stevearc/oil.nvim',
+    keys = { { "-", "<CMD>Oil<CR>", desc = "Open Oil files explorer" } },
+    cmd = { "Oil" },
     dependencies = {
       "nvim-tree/nvim-web-devicons",
+      { "JezerM/oil-lsp-diagnostics.nvim", opt = {} },
       {
         "malewicz1337/oil-git.nvim",
-        dependencies = { "stevearc/oil.nvim" },
         opts = {
           show_file_highlights = true,
           show_directory_highlights = true,
           show_ignored_files = true,
         },
       },
-      {
-        "JezerM/oil-lsp-diagnostics.nvim",
-        dependencies = { "stevearc/oil.nvim" },
-        opts = {},
-      },
-    },
-    cmd = "Oil",
-    keys = {
-      { "-", "<CMD>Oil<CR>", desc = "Open parent directory" },
     },
     ---@module 'oil'
     ---@type oil.SetupOpts
@@ -131,78 +53,125 @@ return {
       },
     },
   },
-  { -- better ui
-    "stevearc/dressing.nvim",
-    config = true,
-  },
-  { -- git functionality
-    "NeogitOrg/neogit",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "sindrets/diffview.nvim",
-      "nvim-telescope/telescope.nvim",
-    },
-    config = true,
-  },
-  { -- for better ui
-    "folke/noice.nvim",
-    event = "VeryLazy",
+  {
+    "mason-org/mason.nvim",
     opts = {
-      lsp = {
-        signature = { enabled = false },
-        notify = { enabled = false },
+      firewall = { enabled = true },
+    },
+  },
+  {
+    'nvim-telescope/telescope.nvim', version = '*',
+    lazy = true,
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+    },
+    config = function()
+      local ts = require('telescope')
+      ts.setup({})
+      -- ts.load_extension("notify")
+    end
+  },
+  {
+    "romus204/tree-sitter-manager.nvim",
+    opts = { auto_install = true },
+  },
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    opts = {},
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    opts = {},
+  },
+  {
+    "folke/trouble.nvim",
+    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    cmd = "Trouble",
+    keys = {
+      {
+        "<leader>xx",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc = "Diagnostics (Trouble)",
+      },
+      {
+        "<leader>xX",
+        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+        desc = "Buffer Diagnostics (Trouble)",
+      },
+      {
+        "<leader>cs",
+        "<cmd>Trouble symbols toggle focus=false<cr>",
+        desc = "Symbols (Trouble)",
+      },
+      {
+        "<leader>cl",
+        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+        desc = "LSP Definitions / references / ... (Trouble)",
+      },
+      {
+        "<leader>xL",
+        "<cmd>Trouble loclist toggle<cr>",
+        desc = "Location List (Trouble)",
+      },
+      {
+        "<leader>xQ",
+        "<cmd>Trouble qflist toggle<cr>",
+        desc = "Quickfix List (Trouble)",
       },
     },
-    dependencies = {
-      "MunifTanjim/nui.nvim",
+  },
+  {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    ---@type snacks.Config
+    opts = {
+      bigfile = { enabled = true },
+      dashboard = { enabled = true },
+      indent = { enabled = true },
+      notifier = { enabled = true },
+      quickfile = { enabled = true },
+      scroll = { enabled = true },
+      statuscolumn = { enabled = true },
     },
   },
+  {
+    "folke/snacks.nvim",
+    ---@type snacks.Config
+    opts = {
+      gh = { enabled = true },
+      picker = { enabled = true },
+      lazygit = { enabled = true },
+    },
+    keys = {
+      { "<leader>gi", function() Snacks.picker.gh_issue() end, desc = "Github Issues (open)" },
+      { "<leader>gI", function() Snacks.picker.gh_issue({ state = "all" }) end, desc = "Github Issues (all)" },
+      { "<leader>gp", function() Snacks.picker.gh_pr() end, desc = "Github Pull Requests (open)" },
+      { "<leader>gP", function() Snacks.picker.gh_pr({ state = "all" }) end, desc = "Github Pull Requests (all)" },
+      { "<leader>gl", function() Snacks.lazygit.open() end, desc = "Open LazyGit" },
+    },
+  },
+  { "j-hui/fidget.nvim", opts = {} },
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    opts = {
+      map_cr = true,
+    },
+  },
+  { -- add todo/fix/info/warn flags to comments with highlights
+    "folke/todo-comments.nvim",
+    event = "VimEnter",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {},
+  },
+  { "wakatime/vim-wakatime", lazy = false },
   { -- for better and smart folds
     "kevinhwang91/nvim-ufo",
     dependencies = { "kevinhwang91/promise-async" },
-    config = true,
-  },
-  { -- to snap code into images
-    "mistricky/codesnap.nvim",
-    build = "make",
-    opts = {
-      mac_window_bar = false,
-      has_breadcrumbs = true,
-      has_line_number = true,
-      show_workspace = true,
-      watermark = "Coded By Davenchy",
-      bg_theme = "grape",
-    },
-  },
-  { -- support for neovim config editing
-    "folke/lazydev.nvim",
-    ft = "lua", -- only load on lua files
-    -- !INFO: config blink or cmp to use lazydev
-    config = true,
-    -- opts = {
-    --   library = {
-    --     -- See the configuration section for more details
-    --     -- Load luvit types when the `vim.uv` word is found
-    --     { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-    --   },
-    -- },
-  },
-  {
-    "mikavilpas/yazi.nvim",
-    event = "VeryLazy",
-    dependencies = { "nvim-lua/plenary.nvim", lazy = true },
-    keys = {
-      {
-        "<leader>-",
-        ":Yazi<CR>",
-        desc = "Yazi: current file",
-      },
-      {
-        "<leader>sy",
-        ":Yazi cwd<CR>",
-        desc = "Yazi: current file",
-      },
-    },
+    opts = {},
   },
   {
     "folke/flash.nvim",
@@ -251,5 +220,10 @@ return {
         desc = "Toggle Flash Search",
       },
     },
+  },
+  {
+    "Exafunction/windsurf.vim",
+    event = "BufEnter",
+    dependencies = { "nvim-lua/plenary.nvim" },
   },
 }
