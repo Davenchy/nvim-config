@@ -27,3 +27,9 @@ vim.api.nvim_create_user_command("CopyScreen", function()
 end, {
   desc = "Copy the code as a screenshot using silicon cli tool",
 })
+
+vim.api.nvim_create_user_command("Home", function()
+  Snacks.dashboard()
+end, {
+  desc = "Show the homescreen (dashboard from Snacks)",
+})
