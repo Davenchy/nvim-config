@@ -1,6 +1,6 @@
 local keymap = vim.keymap.set
 keymap("n", "<ESC>", ":nohl<CR>", { desc = "Save the current file" })
-keymap("n", "<C-s>", ":w<CR>", { desc = "Save the current file" })
+keymap({"n", "i"}, "<C-s>", "<ESC>:w<CR>", { desc = "Save the current file" })
 keymap("n", "<C-q>", ":qa<CR>", { desc = "Save the current file" })
 
 keymap("v", "<C-Up>", ":m '<-2<CR>gv", { desc="Move selections up", silent=true })
@@ -29,6 +29,20 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end
 })
 
+-- Navigate windows from terminal mode
+vim.keymap.set('n', '<leader>t', ':vertical terminal<CR>', { desc = 'Open vertical terminal' })
+vim.keymap.set('n', '<leader>T', ':horizontal terminal<CR>', { desc = 'Open horizontal terminal' })
+vim.keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]], { desc = 'Terminal window commands' })
+vim.keymap.set('t', '<C-w>.', '<C-w>', { desc = 'Send <C-w> to terminal' })
+-- vim.keymap.set('t', '<C-h>', [[<C-\><C-n><C-w>h]], { desc = 'Move to left window' })
+-- vim.keymap.set('t', '<C-j>', [[<C-\><C-n><C-w>j]], { desc = 'Move to bottom window' })
+-- vim.keymap.set('t', '<C-k>', [[<C-\><C-n><C-w>k]], { desc = 'Move to top window' })
+-- vim.keymap.set('t', '<C-l>', [[<C-\><C-n><C-w>l]], { desc = 'Move to right window' })
+-- vim.keymap.set('t', '<C-Left>', [[<C-\><C-n><C-w>h]], { desc = 'Move to left window' })
+-- vim.keymap.set('t', '<C-Down>', [[<C-\><C-n><C-w>j]], { desc = 'Move to bottom window' })
+-- vim.keymap.set('t', '<C-Up>', [[<C-\><C-n><C-w>k]], { desc = 'Move to top window' })
+-- vim.keymap.set('t', '<C-Right>', [[<C-\><C-n><C-w>l]], { desc = 'Move to right window' })
+
 -- WhichKey Groups --
 local wk = require("which-key")
 wk.add({
@@ -37,6 +51,8 @@ wk.add({
   { "<leader>x", group = "code analysis" },
   { "<leader>g", group = "Git/Github Tools" },
   { "gr", group = "LSP tools" },
+  { "grs", ":Telescope lsp_document_symbols<CR>", desc = "Document Symbols" },
+  { "grS", ":Telescope lsp_workspace_symbols<CR>", desc = "Workspace Symbols" },
   {
     "<leader>b", group = "Buffers",
     expand = function()

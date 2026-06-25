@@ -36,7 +36,7 @@ vim.opt.undodir = vim.fn.stdpath("data") .. "/undodir"
 vim.opt.confirm = true
 vim.opt.clipboard:prepend("unnamedplus")
 vim.opt.isfname:append("@-@")
-vim.opt.guicursor = ""
+vim.opt.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkon200-blinkoff200"
 vim.opt.scrolloff = 5
 
 vim.opt.mouse = "a"

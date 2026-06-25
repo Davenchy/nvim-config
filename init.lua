@@ -25,7 +25,7 @@ require("lazy").setup({
     { import = "plugins" }
   },
   install = { colorscheme = { "catppuccin", "habamax" } },
-  checker = { enabled = true }
+  checker = { enabled = true, notify = false, frequency = 24 * 60 * 60 }
 })
 
 -- load modules in sequence without interruption on error
